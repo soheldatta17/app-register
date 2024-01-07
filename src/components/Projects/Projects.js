@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{useState} from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
@@ -9,87 +9,137 @@ import chatify from "../../Assets/Projects/chatify.png";
 import suicide from "../../Assets/Projects/suicide.png";
 import bitsOfCode from "../../Assets/Projects/blog.png";
 
+import item1Image from '../../Assets/item1.jpg';
+import item2Image from '../../Assets/item2.png';
+import item3Image from '../../Assets/item3.jpg';
+// import { useState } from "react";
+
 function Projects() {
+  const [showDetails, setShowDetails] = useState("More");
+
+  const handleButtonClick = () => {
+    if (showDetails == "More") {
+      setShowDetails("Less")
+    }
+    else {
+      setShowDetails("More")
+    }
+  };
   return (
-    <Container fluid className="project-section">
-      <Particle />
-      <Container>
-        <h1 className="project-heading">
-          My Recent <strong className="purple">Works </strong>
-        </h1>
-        <p style={{ color: "white" }}>
-          Here are a few projects I've worked on recently.
-        </p>
-        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
-          <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={chatify}
-              isBlog={false}
-              title="Chatify"
-              description="Personal Chat Room or Workspace to share resources and hangout with friends build with react.js, Material-UI, and Firebase. Have features which allows user for realtime messaging, image sharing as well as supports reactions on messages."
-              ghLink="https://github.com/soumyajit4419/Chatify"
-              demoLink="https://chatify-49.web.app/"
-            />
-          </Col>
+    <>
+    <header>
+        <div className="section__container header__container">
+          <div className="header__image">
 
-          <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={bitsOfCode}
-              isBlog={false}
-              title="Bits-0f-C0de"
-              description="My personal blog page build with Next.js and Tailwind Css which takes the content from makdown files and renders it using Next.js. Supports dark mode and easy to write blogs using markdown."
-              ghLink="https://github.com/soumyajit4419/Bits-0f-C0de"
-              demoLink="https://blogs.soumya-jit.tech/"
-            />
-          </Col>
+          </div>
+          <div className="header__content">
+            <div>
+              <p className="sub__header"></p>
+              <h1> <br /></h1>
+              <p className="section__subtitle">
+                </p>
+              <div className="action__btns">
+                <div className="story">
+                  <div className="video__image">
+                    
+                  </div>
+                  <span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
 
-          <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={editor}
-              isBlog={false}
-              title="Editor.io"
-              description="Online code and markdown editor build with react.js. Online Editor which supports html, css, and js code with instant view of website. Online markdown editor for building README file which supports GFM, Custom Html tags with toolbar and instant preview.Both the editor supports auto save of work using Local Storage"
-              ghLink="https://github.com/soumyajit4419/Editor.io"
-              demoLink="https://editor.soumya-jit.tech/"              
-            />
-          </Col>
+    <section className="trip">
+        <div className="section__container trip__container">
+          <h2 className="section__title">Pick your order now!</h2>
+          <br/>
+          <p className="section__subtitle">
+            Find the best deals for your meals.
+          </p>
+          <div className="trip__grid">
+            <div className="trip__card">
+              <img src={item1Image} alt="item1" />
+              <div className="trip__details">
+                <p>Breakfast </p>
+                <div className="rating"><i className="ri-star-fill"></i> 4.2</div>
+                <div className="booking__price">
+                  <div className="price"><span>Starts from</span> ₹300</div>
+                  <button className="book__now">Order Now</button>
+                </div>
+              </div>
+            </div>
+            <div className="trip__card">
+              <img src={item2Image} alt="item2" />
+              <div className="trip__details">
+                <p>Meals</p>
+                <div className="rating"><i className="ri-star-fill"></i> 4.5</div>
+                <div className="booking__price">
+                  <div className="price"><span>Starts from</span> ₹450</div>
+                  <button className="book__now">Order Now</button>
+                </div>
+              </div>
+            </div>
+            <div className="trip__card">
+              <img src={item3Image} alt="item3" />
+              <div className="trip__details">
+                <p>Beverages</p>
+                <div className="rating"><i className="ri-star-fill"></i> 4.7</div>
+                <div className="booking__price">
+                  <div className="price"><span>Starts from</span> ₹199</div>
+                  <button className="book__now">Order Now</button>
+                </div>
+              </div>
+            </div>
+            <div className="trip__card" style={{ display: showDetails == "Less" ? 'block' : 'none' }}>
+              <img src={item3Image} alt="item3" />
+              <div className="trip__details">
+                <p>Beverages</p>
+                <div className="rating"><i className="ri-star-fill"></i> 4.7</div>
+                <div className="booking__price">
+                  <div className="price"><span>Starts from</span> ₹199</div>
+                  <button className="book__now">Order Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="view__all">
+            <button onClick={handleButtonClick}>View {showDetails}</button>
+          </div>
+        </div>
+      </section>
 
-          <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={leaf}
-              isBlog={false}
-              title="Plant AI"
-              description="Used the plant disease dataset from Kaggle and trained a image classifer model using 'PyTorch' framework using CNN and Transfer Learning with 38 classes of various plant leaves. The model was successfully able to detect diseased and healthy leaves of 14 unique plants. I was able to achieve an accuracy of 98% by using Resnet34 pretrained model."
-              ghLink="https://github.com/soumyajit4419/Plant_AI"
-              demoLink="https://plant49-ai.herokuapp.com/"
-            />
-          </Col>
+      <footer className="footer">
+        <div className="section__container footer__container">
+          <div className="footer__col">
+            <h3>Foodies<span>.</span></h3>
+            <p>
+              A feast for the eyes, a symphony for the senses.
+            </p>
+          </div>
+          <div className="footer__col">
+            <h4>Support</h4>
+            <p>FAQs</p>
+            <p>Terms & Conditions</p>
+            <p>Privacy Policy</p>
+            <p>Contact Us</p>
+          </div>
+          <div className="footer__col">
+            <h4>Address</h4>
+            <p>
+              <span>Address:</span> Airport, Kolkata, West Bengal
+            </p>
+            <p><span>Email:</span> soheldatta17@gmail.com </p>
+            <p><span>Phone:</span> +91 9748886527</p>
+          </div>
+        </div>
+        <div className="footer__bar">
+          Copyright © 2024 Sohel. All rights reserved.
+        </div>
+      </footer>
+    </>
 
-          <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={suicide}
-              isBlog={false}
-              title="Ai For Social Good"
-              description="Using 'Natural Launguage Processing' for the detection of suicide-related posts and user's suicide ideation in cyberspace  and thus helping in sucide prevention."
-              ghLink="https://github.com/soumyajit4419/AI_For_Social_Good"
-              // demoLink="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" <--------Please include a demo link here
-            />
-          </Col>
-
-          <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={emotion}
-              isBlog={false}
-              title="Face Recognition and Emotion Detection"
-              description="Trained a CNN classifier using 'FER-2013 dataset' with Keras and tensorflow backened. The classifier sucessfully predicted the various types of emotions of human. And the highest accuracy obtained with the model was 60.1%.
-              Then used Open-CV to detect the face in an image and then pass the face to the classifer to predict the emotion of a person."
-              ghLink="https://github.com/soumyajit4419/Face_And_Emotion_Detection"
-              // demoLink="https://blogs.soumya-jit.tech/"      <--------Please include a demo link here 
-            />
-          </Col>
-        </Row>
-      </Container>
-    </Container>
   );
 }
 

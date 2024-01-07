@@ -99,11 +99,11 @@ function NavBar() {
 
             <Nav.Item>
               <Nav.Link
-                href="#"
-                target="_blank"
-                rel="noreferrer"
+                as={Link}
+                to="/gallery"
+                onClick={() => updateExpanded(false)}
               >
-                <FaAddressBook style={{ marginBottom: "2px" }} /> Contact
+                <CgFileDocument style={{ marginBottom: "2px" }} /> Gallery
               </Nav.Link>
             </Nav.Item>
 
