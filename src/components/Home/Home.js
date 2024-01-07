@@ -23,7 +23,7 @@ function Home() {
           <div className="action__btns">
             <div className="story">
               <div className="video__image">
-                <img src={storyImage} alt="story" style={{ marginTop: "2rem", fontWeight: "bolder" }} />
+                <img src="https://static.thenounproject.com/png/2897100-200.png" alt="story" style={{ marginTop: "2rem", fontWeight: "bolder" }} />
                 <span><i className="ri-play-fill"></i></span>
               </div>
               <button style={{
