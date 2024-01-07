@@ -27,25 +27,9 @@ function About() {
     <>
     <header>
         <div className="section__container header__container">
-          <div className="header__image">
 
-          </div>
-          <div className="header__content">
-            <div>
-              <p className="sub__header"></p>
-              <h1> <br /></h1>
-              <p className="section__subtitle">
-                </p>
-              <div className="action__btns">
-                <div className="story">
-                  <div className="video__image">
-                    
-                  </div>
-                  <span></span>
-                </div>
-              </div>
-            </div>
-          </div>
+
+
         </div>
       </header>
     <section className="section__container destination__container">
