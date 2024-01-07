@@ -1,27 +1,9 @@
 import React, { useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import homeLogo from "../../Assets/home-main.svg";
-import Particle from "../Particle";
-import Home2 from "./Home2";
-import Type from "./Type";
 import storyImage from '../../Assets/story.jpg';
-
-import gallery1Image from '../../Assets/gallery-1.jpg';
-import gallery2Image from '../../Assets/gallery-2.jpg';
-import gallery3Image from '../../Assets/gallery-3.jpg';
 
 // import "../../App.css"
 function Home() {
-  const [showDetails, setShowDetails] = useState("More");
-
-  const handleButtonClick = () => {
-    if (showDetails == "More") {
-      setShowDetails("Less")
-    }
-    else {
-      setShowDetails("More")
-    }
-  };
+  
   return (
     <>
       <header>
