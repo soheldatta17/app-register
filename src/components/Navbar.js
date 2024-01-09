@@ -13,16 +13,31 @@ import {
   AiOutlineHome,
   AiOutlineFundProjectionScreen,
   AiOutlineUser,
+  AiOutlinePoweroff
 } from "react-icons/ai";
 
+import { auth, provider } from "../firebase-config";
+import { signOut } from "firebase/auth";
+import Cookies from "universal-cookie";
+
 import { CgFileDocument } from "react-icons/cg";
-function al()
-{
-  alert("Light mode isn't available")
-}
-function NavBar() {
+const cookies = new Cookies();
+
+function NavBar({ setIsAuth, setEmail, Icon, setIcon }) {
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
+  const logout = async () => {
+    try {
+      await signOut(auth)
+      setEmail("")
+      cookies.remove("auth-token");
+      setIsAuth(false)
+      alert("Successfully Logged Out")
+    }
+    catch (err) {
+      console.error(err);
+    }
+  }
 
   function scrollHandler() {
     if (window.scrollY >= 20) {
@@ -44,7 +59,7 @@ function NavBar() {
     >
       <Container>
         <Navbar.Brand href="/" className="d-flex">
-          <img src={logo} className="img-fluid logo" alt="brand" />
+          <img src={Icon} className="img-fluid logo" alt="brand" />
         </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
@@ -70,7 +85,7 @@ function NavBar() {
                 to="/about"
                 onClick={() => updateExpanded(false)}
               >
-                <AiOutlineUser style={{ marginBottom: "2px" }} /> About
+                <AiOutlineUser style={{ marginBottom: "2px" }} /> Category
               </Nav.Link>
             </Nav.Item>
 
@@ -83,7 +98,7 @@ function NavBar() {
                 <AiOutlineFundProjectionScreen
                   style={{ marginBottom: "2px" }}
                 />{" "}
-                Projects
+                Items
               </Nav.Link>
             </Nav.Item>
 
@@ -93,7 +108,7 @@ function NavBar() {
                 to="/resume"
                 onClick={() => updateExpanded(false)}
               >
-                <CgFileDocument style={{ marginBottom: "2px" }} /> Resume
+                <CgFileDocument style={{ marginBottom: "2px" }} /> Menu
               </Nav.Link>
             </Nav.Item>
 
@@ -109,11 +124,11 @@ function NavBar() {
 
             <Nav.Item className="fork-btn">
               <Button
-                onClick={al}
+                onClick={logout}
                 className="fork-btn-inner"
+                style={{ marginTop:"0.6rem",backgroundColor: "rgba(255, 0, 0, 0.796)",borderColor: "rgba(255, 0, 0, 0.796)" }}
               >
-                <ImSun style={{ fontSize: "1.2em" }} />{" "}
-                {/* <AiFillStar style={{ fontSize: "1.1em" }} /> */}
+                <AiOutlinePoweroff style={{ fontSize: "1.2em",textAlign: "center",paddingBottom:"0.2rem",fontWeight: "bolder" }} />{" "}
               </Button>
             </Nav.Item>
           </Nav>

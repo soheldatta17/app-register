@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import storyImage from '../../Assets/story.jpg';
-
+import "../../App.css"
+import { Link } from "react-router-dom";
 // import "../../App.css"
 function Home() {
   

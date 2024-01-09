@@ -1,23 +1,20 @@
-import React,{useState} from "react";
+import React, { useState, useEffect } from "react";
+import { Container, Row } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Particle from "../Particle";
+import pdf from "./menu.pdf";
+import { AiOutlineDownload } from "react-icons/ai";
+import { Document, Page, pdfjs } from "react-pdf";
+import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
-import gallery1Image from '../../Assets/gallery-1.jpg';
-import gallery2Image from '../../Assets/gallery-2.jpg';
-import gallery3Image from '../../Assets/gallery-3.jpg';
+function Menu() {
+  const [width, setWidth] = useState(1200);
 
+  useEffect(() => {
+    setWidth(window.innerWidth);
+  }, []);
 
-function Gallery() {
-  const food1Image = "https://png.pngtree.com/thumb_back/fw800/background/20220521/pngtree-aromatic-frappuccino-table-cool-table-cafe-photo-image_45997368.jpg"
-
-  const [showDetails, setShowDetails] = useState("More");
-
-  const handleButtonClick = () => {
-    if (showDetails == "More") {
-      setShowDetails("Less")
-    }
-    else {
-      setShowDetails("More")
-    }
-  };
   return (
     <>
     <header>
@@ -27,34 +24,33 @@ function Gallery() {
 
         </div>
       </header>
-      <section className="gallary">
-        <div className="section__container gallary__container">
-          <div className="image__gallary">
-            <div className="gallary__col">
-              <img src={gallery1Image} alt="gallery-1" />
-            </div>
-            <div className="gallary__col">
-              <img src={gallery2Image} alt="gallery-2" />
-              <img src={gallery3Image} alt="gallery-3" />
-            </div>
-          </div>
-          <div className="gallary__content">
-            <div>
-              <h2 className="section__title">
-                Our event gallery
-              </h2>
-              <p className="section__subtitle">
-                Let us make your festivals colourful with our spices.
-              </p>
-              <button>View All</button>
-            </div>
-          </div>
-        </div>
-      </section>
+    <div>
+      <Container fluid className="resume-section">
+        <Particle />
+        <Row style={{ justifyContent: "center", position: "relative" }}>
+          
+        </Row>
 
-      
+        <Row className="resume">
+          <Document file={pdf} className="d-flex justify-content-center">
+            <Page pageNumber={1} scale={width > 786 ? 1.7 : 0.6} />
+          </Document>
+        </Row>
 
-      <footer className="footer">
+        <Row style={{ justifyContent: "center", position: "relative" }}>
+          <Button
+            variant="primary"
+            href={pdf}
+            target="_blank"
+            style={{ maxWidth: "250px",marginBottom: "2rem" }}
+          >
+            <AiOutlineDownload />
+            &nbsp;Download Menu
+          </Button>
+        </Row>
+      </Container>
+    </div>
+    <footer className="footer">
         <div className="section__container footer__container">
           <div className="footer__col">
             <h3>Foodies<span>.</span></h3>
@@ -82,9 +78,8 @@ function Gallery() {
           Copyright © 2024 Sohel. All rights reserved.
         </div>
       </footer>
-
-      </>
+    </>
   );
 }
 
-export default Gallery;
+export default Menu;
