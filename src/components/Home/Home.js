@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import {auth} from "../../firebase-config"
 import storyImage from '../../Assets/story.jpg';
 import "../../App.css"
 import { Link } from "react-router-dom";
+import Preloader from "../Pre"
+
 // import "../../App.css"
-function Home() {
-  
+function Home({name}) {
   return (
     <>
       <header>
@@ -16,7 +18,7 @@ function Home() {
       </header>
       <div className="header__content">
         <div>
-          <p className="sub__header"></p>
+          <p className="sub__header">Hi {name},</p>
           <h1>Welcome to the Foodies</h1>
           <p className="section__subtitle" style={{ marginTop: "4rem", fontWeight: "bolder" }}>
             A feast for the eyes, a symphony for the senses.
@@ -34,8 +36,13 @@ function Home() {
                 marginLeft: "auto",
                 marginRight: "auto",
               }}
+              onClick={() => {
+                document.getElementById('aboutLink').click();
+              }}
               >Start planning</button>
               <span style={{ marginTop: "2rem", fontWeight: "bolder" }}></span>
+              <Link id="aboutLink" to="/about" style={{ display: 'none' }}>Go to About</Link>
+              
             </div>
           </div>
         </div>

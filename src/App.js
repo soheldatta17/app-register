@@ -25,7 +25,11 @@ const App = () => {
   const [Email, setEmail] = useState("")
   const [Room, setRoom] = useState(0)
   const [Icon, setIcon] = useState("")
-  const [load, upadateLoad] = useState(true);
+  const [load, setLoad] = useState(true);
+  useEffect(()=>
+  {
+    setLoad(false)
+  },[])
 
   var s=0
   if (!isAuth)
@@ -37,6 +41,7 @@ const App = () => {
 else
 {
   const photoURL = (cookies.get('auth-token') && cookies.get('auth-token').photoURL) || '';
+  const name= (cookies.get('auth-token') && cookies.get('auth-token').userName) || 'User'
   return (
     
     <Router>
@@ -45,7 +50,7 @@ else
         <Navbar setIsAuth={setIsAuth} setEmail={setEmail} Icon={photoURL} setIcon={setIcon}/>
         
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home name={name} />} />
           <Route path="/project" element={<Projects />} />
           <Route path="/about" element={<About />} />
           <Route path="/resume" element={<Menu />} />

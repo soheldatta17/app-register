@@ -223,10 +223,11 @@ header {
 }
 
 .header__content .sub__header {
-  font-size: 1rem;
+  font-size: 3rem;
   font-weight: 600;
   color: black;
   margin-top: 0.6rem;
+  font-family: cursive;
 }
 
 .header__content h1 {
@@ -752,4 +753,9 @@ button {
   color: white;
   font-weight: 800;
   -webkit-text-stroke: 1px black; /* Adds a 1px black border around the text for WebKit browsers */
+}
+.menu
+{
+  text-align: center;
+  justify-content: center;
 }

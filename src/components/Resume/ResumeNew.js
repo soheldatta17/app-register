@@ -1,56 +1,39 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import Particle from "../Particle";
-import pdf from "./menu.pdf";
-import { AiOutlineDownload } from "react-icons/ai";
-import { Document, Page, pdfjs } from "react-pdf";
-import "react-pdf/dist/esm/Page/AnnotationLayer.css";
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 function Menu() {
-  const [width, setWidth] = useState(1200);
 
-  useEffect(() => {
-    setWidth(window.innerWidth);
-  }, []);
 
   return (
     <>
-    <header>
+      <header>
         <div className="section__container header__container">
 
 
 
         </div>
       </header>
-    <div>
-      <Container fluid className="resume-section">
-        <Particle />
-        <Row style={{ justifyContent: "center", position: "relative" }}>
-          
-        </Row>
-
-        <Row className="resume">
-          <Document file={pdf} className="d-flex justify-content-center">
-            <Page pageNumber={1} scale={width > 786 ? 1.7 : 0.6} />
-          </Document>
-        </Row>
-
-        <Row style={{ justifyContent: "center", position: "relative" }}>
-          <Button
-            variant="primary"
-            href={pdf}
+      <br /><br />
+      <div className="menu">
+        <img src="https://i.etsystatic.com/31797376/r/il/37daa7/3605172923/il_fullxfull.3605172923_3ixq.jpg" alt="" className="imagemenu" />
+        <Button
+          variant="primary"
+          style={{ maxWidth: "250px", marginBottom: "2rem", marginTop: "2rem" }}
+        >
+          <a
+            href="https://i.etsystatic.com/31797376/r/il/37daa7/3605172923/il_fullxfull.3605172923_3ixq.jpg"
+            download="menu_image.jpg"
             target="_blank"
-            style={{ maxWidth: "250px",marginBottom: "2rem" }}
+            style={{ color: 'inherit', textDecoration: 'inherit' }}
           >
-            <AiOutlineDownload />
-            &nbsp;Download Menu
-          </Button>
-        </Row>
-      </Container>
-    </div>
-    <footer className="footer">
+            Download Menu
+          </a>
+        </Button>
+
+      </div>
+
+      <footer className="footer">
         <div className="section__container footer__container">
           <div className="footer__col">
             <h3>Foodies<span>.</span></h3>
